@@ -4,8 +4,6 @@ Algoritmo costo_enviozapatos
     Definir destino como Cadena
 	
     //Asignacion de valores 
-    desc1 <- 0.1 // Descuento 10%
-    desc2 <- 0.05 // Descuento 5% adicional por 2 pares o mas
     IVA <- 0.12 // IVA 12%
 	
 	// Vector de destinos
