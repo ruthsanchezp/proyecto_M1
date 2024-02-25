@@ -56,7 +56,27 @@ Algoritmo costo_enviozapatos
 		FinSi
 		
 	Hasta Que cantidad >= 1
-	
+
+	Escribir ("Ingresar cupon de descuento 1: Ej. desc1")
+	leer descuento1
+	Si descuento1 = "desc1" Entonces
+		aplicadesc1 <- 0.1 // Descuento 10%
+   	Sino 
+	    aplicadesc1 <- 0 // Descuento 0
+	FinSi
+    
+	Si cantidad >=2 Entonces
+		Escribir ("Ingresar cupon de descuento 2: Ej. desc2")
+		leer descuento2
+		Si descuento2 = "desc2" Entonces
+			aplicadesc2 <- 0.05 // Descuento 5% adicional por 2 pares o m�s
+	Sino
+			aplicadesc2 <- 0
+	FinSi
+		
+		FinSi
+
+
 	// Solicita el destino en los formatos indicados
 	Escribir("Ingresar Ciudad de destino. Ej. ny, pe, bo, br, es.")
 	leer destino
@@ -88,13 +108,13 @@ Algoritmo costo_enviozapatos
 
      // Condicion para el envío de 2 o más pares, o en caso contrario, para 1 par de zapatos.
 	Si cantidad >= 2 Entonces
-		precio <- precio * (1 - desc1) // Aplicar descuento del 10% 
+		precio <- precio * (1 - aplicadesc1) // Aplicar descuento del 10% 
 		precioIVA <- precio * (1 + IVA) // Monto con IVA
-		precioDesc2 <- precioIVA * (1 - desc2) // Precio con 5% adicional de descuento por 2 o mas pares
+		precioDesc2 <- precioIVA * (1 - aplicadesc2) // Precio con 5% adicional de descuento por 2 o mas pares
 		total1 <- precioDesc2 * cantidad // Total iva incluido, antes de envio
 		precioEnvioTotal <- precioxDestino + cantidad  * peso //Costo de destino fijo, mas kg por par de zapatos
 	SiNo 
-		precio <- precio * (1 - desc1) // Aplicar descuento del 10%  
+		precio <- precio * (1 - aplicadesc1) // Aplicar descuento del 10%  
 		precioIVA <- precio * (1 + IVA) // Monto con IVA
 		total1 <- precioIVA * cantidad // Total iva incluido, antes de envio
 		precioEnvioTotal <- precioxDestino + cantidad * peso // Costo de destino fijo, mas kg por par de zapatos
