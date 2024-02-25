@@ -48,7 +48,7 @@ Algoritmo costo_enviozapatos
 	
 	// Solicita la cantidad, hasta que sea mayor o igual a 1
 	Repetir
-		Escribir("Ingresar Cantidad de zapatos:")
+		Escribir("Ingresar Cantidad pares de zapatos:")
 		leer cantidad
 		
 		Si cantidad <= 0 Entonces
