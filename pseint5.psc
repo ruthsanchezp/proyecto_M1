@@ -57,6 +57,8 @@ Algoritmo costo_enviozapatos
 		
 	Hasta Que cantidad >= 1
 
+	// Solicita ingresar un cupon de descuento. Si el nombre del cupon es "desc1" aplica un 10%. En otro caso, 0%
+
 	Escribir ("Ingresar cupon de descuento 1: Ej. desc1")
 	leer descuento1
 	Si descuento1 = "desc1" Entonces
@@ -64,7 +66,9 @@ Algoritmo costo_enviozapatos
    	Sino 
 	    aplicadesc1 <- 0 // Descuento 0
 	FinSi
-    
+    	
+// Si la cantidad es mayor a 2, solicita ingresar un segundo cupon de descuento. Si el nombre del cupon es "desc2" aplica un 5% adicional. En otro caso, 0%
+
 	Si cantidad >=2 Entonces
 		Escribir ("Ingresar cupon de descuento 2: Ej. desc2")
 		leer descuento2
