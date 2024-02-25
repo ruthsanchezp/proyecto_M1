@@ -1,0 +1,157 @@
+<HTML><HEAD>
+	<TITLE>pseint4.psc</TITLE>
+	<STYLE type="text/css">
+		.SSD { color:#FFFFFF; background-color:#000000; }
+		.SS0 { color:#000000; background-color:#FFFFFF; }
+		.SS1 { color:#000000; background-color:#FFFFFF; }
+		.SS2 { font-style: italic; color:#969696; background-color:#FFFFFF; }
+		.SS3 { font-style: italic; color:#0000FF; background-color:#FFFFFF; }
+		.SS4 { color:#8E6B23; background-color:#FFFFFF; }
+		.SS5 { font-weight: bold; color:#000080; background-color:#FFFFFF; }
+		.SS6 { color:#FF0000; background-color:#FFFFFF; }
+		.SS7 { color:#FF0000; background-color:#FFFFFF; }
+		.SS8 { color:#DB70DB; background-color:#FFFFFF; }
+		.SS9 { color:#238E23; background-color:#FFFFFF; }
+		.SS10 { font-weight: bold; color:#000000; background-color:#FFFFFF; }
+		.SS11 { color:#000000; background-color:#FFFFFF; }
+		.SS12 { color:#FF0000; background-color:#F0F0F0; }
+		.SS13 { color:#000000; background-color:#FFFFFF; }
+		.SS14 { color:#DB70DB; background-color:#FFFFFF; }
+		.SS15 { color:#238E23; background-color:#FFFFFF; }
+		.SS16 { color:#000080; background-color:#FFFFFF; }
+		.SS17 { color:#42426F; background-color:#FFFFFF; }
+		.SS18 { color:#FF0000; background-color:#FFFFFF; }
+		.SS19 { color:#000000; background-color:#BFD8D8; }
+		.SS34 { font-weight: bold; color:#FF0000; background-color:#F0F0FF; }
+		.SS35 { font-weight: bold; color:#800000; background-color:#FFFFFF; }
+	</STYLE>
+</HEAD><BODY><PRE>
+<SPAN class="SS5">Algoritmo</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">calcularPrecioEnvio</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Definir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">desc1</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">desc2</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">IVA</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioDesc2</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioIVA</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">total1</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">total2</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioEnvioTotal</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">posicion</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioxDestino</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">peso</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">i</SPAN><SPAN class="SS10">,</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">j</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">como</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Real</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Definir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">como</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Entero</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Definir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">destino</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">como</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Cadena</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">//Asignación de valores </SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">desc1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">0.1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Descuento 10%</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">desc2</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">0.05</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Descuento 5% adicional por 2 pares o más</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">IVA</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">0.12</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// IVA 12%</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Vector de destinos</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Dimension</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">5</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"ny"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">2</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"pe"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">3</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"bo"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">4</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"br"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">5</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"es"</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Vector de precios  fijos por destino</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Dimension</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">5</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"10"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">2</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"20"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">3</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"30"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">4</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"40"</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS4">5</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS6">"50"</SPAN><SPAN class="SS0">
+
+    </SPAN><SPAN class="SS2">// Solicita ingresar el precio, hasta que sea mayor o igual a 1</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Repetir</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Ingresar precio producto:"</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">leer</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0">
+        
+        </SPAN><SPAN class="SS5">Si</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≤</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">0</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Entonces</SPAN><SPAN class="SS0">
+            </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"El precio mínimo es de $1 por unidad."</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">FinSi</SPAN><SPAN class="SS0">
+        
+    </SPAN><SPAN class="SS5">Hasta</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Que</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≥</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Solicita el peso, hasta que sea mayor o igual a 1</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Repetir</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Ingresar peso en KG por producto:"</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">leer</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">peso</SPAN><SPAN class="SS0">
+    
+        </SPAN><SPAN class="SS5">Si</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">peso</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≤</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">0</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Entonces</SPAN><SPAN class="SS0">
+            </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"El precio mínimo es de $1 por unidad."</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">FinSi</SPAN><SPAN class="SS0">
+        
+    </SPAN><SPAN class="SS5">Hasta</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Que</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">peso</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≥</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Solicita la cantidad, hasta que sea mayor o igual a 1</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Repetir</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Ingresar Cantidad de zapatos:"</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">leer</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0">
+        
+        </SPAN><SPAN class="SS5">Si</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≤</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">0</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Entonces</SPAN><SPAN class="SS0">
+            </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"El pedido mínimo es de 1 unidad."</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">FinSi</SPAN><SPAN class="SS0">
+        
+    </SPAN><SPAN class="SS5">Hasta</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Que</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≥</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">//Solicita el destino en los formatos indicados</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Ingresar Ciudad de destino. Ej. ny, pe, bo, br, es."</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">leer</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">destino</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">//Recorre el vector destinos, y busca que el destino que se ingresa por pantalla concida con algún valor del vector</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS2">//Si se cumple, guarda esa posicion en la que encontró el valor.</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Para</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">i</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Hasta</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">5</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Con</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Paso</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Hacer</SPAN><SPAN class="SS0">        
+        
+        </SPAN><SPAN class="SS5">Si</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">destinos</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS11">i</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">=</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">destino</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Entonces</SPAN><SPAN class="SS0">
+            </SPAN><SPAN class="SS11">posicion</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">i</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">FinSi</SPAN><SPAN class="SS0">
+        
+    </SPAN><SPAN class="SS5">FinPara</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Recorre el vector PrecioDestino, y busca que la posicion del vector encontrada en destinos, sea igual a la de PrecioDestino</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS2">//Si se cumple la condicion, guarda el valor de la posición de PrecioDestino, en una variable llamada "pdestino".</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Para</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">j</SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Hasta</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">5</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">con</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">paso</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Hacer</SPAN><SPAN class="SS0">
+        
+        </SPAN><SPAN class="SS5">Si</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">posicion</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">==</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">j</SPAN><SPAN class="SS0"> 
+            </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"El costo fijo de envío al destino es:"</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+            </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS11">j</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0">
+            </SPAN><SPAN class="SS11">pdestino</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioDestino</SPAN><SPAN class="SS10">[</SPAN><SPAN class="SS11">j</SPAN><SPAN class="SS10">]</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS5">FinSi</SPAN><SPAN class="SS0">
+        
+    </SPAN><SPAN class="SS5">FinPara</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Se convierte a número, ya estaba definida como cadena y arrojaba error en el calculo de precioEnvioTotal</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">precioxDestino</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS16">ConvertirANumero</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">pdestino</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS5">Si</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">≥</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS4">2</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS5">Entonces</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">-</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">desc1</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Aplicar descuento del 10% </SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">precioIVA</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">+</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">IVA</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Monto con IVA</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">precioDesc2</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioIVA</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">-</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">desc2</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Precio con 5% adicional de descuento por 2 o más pares</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">total1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioDesc2</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Total iva incluído, antes de envío</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">precioEnvioTotal</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioxDestino</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">+</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0">  </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">peso</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">//Costo de destino fijo, mas kg por par de zapatos</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">SiNo</SPAN><SPAN class="SS0"> 
+        </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">-</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">desc1</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Aplicar descuento del 10%  </SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">precioIVA</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS4">1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">+</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">IVA</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Monto con IVA</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">total1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioIVA</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Total iva incluído, antes de envío</SPAN><SPAN class="SS0">
+        </SPAN><SPAN class="SS11">precioEnvioTotal</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioxDestino</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">+</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">*</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">peso</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS2">// Costo de destino fijo, mas kg por par de zapatos</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">FinSi</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Calcular el total final a pagar</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS11">total2</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS9">←</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">total1</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS10">+</SPAN><SPAN class="SS0"> </SPAN><SPAN class="SS11">precioEnvioTotal</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Mostrar los resultados</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Precio unitario con 10% descuento: "</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">precio</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Precio + 12% IVA: "</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">precioIVA</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Cantidad de pares: "</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">cantidad</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Precio con 5% descuento adicional, por cantidad: "</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">precioDesc2</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Total antes de envío:"</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">total1</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Precio total de envío al destino:"</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">precioEnvioTotal</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+    </SPAN><SPAN class="SS2">// Mostrar el total final</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS6">"Total final a pagar: "</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    </SPAN><SPAN class="SS5">Escribir</SPAN><SPAN class="SS10">(</SPAN><SPAN class="SS11">total2</SPAN><SPAN class="SS10">)</SPAN><SPAN class="SS0">
+    
+</SPAN><SPAN class="SS5">FinAlgoritmo</SPAN>
+</PRE></BODY></HTML>
