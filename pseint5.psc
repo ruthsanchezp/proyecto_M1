@@ -61,8 +61,12 @@ Algoritmo costo_enviozapatos
 	leer descuento1
 	Si descuento1 = "promo10" Entonces
 		aplicadesc1 <- 0.1 // Descuento 10%
+		Escribir("Se ha aplicado un 10% de descuento.")
+		Escribir ""
    	Sino 
 	    aplicadesc1 <- 0 // Descuento 0
+	    Escribir("El cupon ingresado no tiene descuento.")
+	    Escribir ""
 	FinSi
     	
 // Si la cantidad es mayor a 2, solicita ingresar un segundo cupon de descuento. Si el nombre del cupon es "desc2" aplica un 5% adicional. En otro caso, 0%
@@ -71,9 +75,13 @@ Algoritmo costo_enviozapatos
 		Escribir ("Ingresar cupon de descuento 2: Ej. promo5")
 		leer descuento2
 		Si descuento2 = "promo5" Entonces
-			aplicadesc2 <- 0.05 // Descuento 5% adicional por 2 pares o mas
+		aplicadesc2 <- 0.05 // Descuento 5% adicional por 2 pares o mas
+		Escribir("El cupon ingresado no tiene descuento.")
+		Escribir ""
 	Sino
-			aplicadesc2 <- 0
+		aplicadesc2 <- 0
+		Escribir("El cupon ingresado no tiene descuento.")
+		Escribir ""
 	FinSi
 		
 		FinSi
