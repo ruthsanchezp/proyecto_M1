@@ -134,7 +134,7 @@ Algoritmo costo_enviozapatos
     total2 <- total1 + precioEnvioTotal
     
     // Muestra los resultados deglosados
-    Escribir("Precio unitario con 10% descuento: ")
+    Escribir("Precio unitario descuento 10% <promo10>: ")
     Escribir(precio)
     
     Escribir("Precio + 12% IVA: ")
@@ -143,7 +143,7 @@ Algoritmo costo_enviozapatos
     Escribir("Cantidad de pares: ")
     Escribir(cantidad)
     
-    Escribir("Precio con 5% descuento adicional, por cantidad: ")
+    Escribir("Precio 5% adicional <promo5>:")
     Escribir(precioDesc2)
     
     Escribir("Total antes de envio:")
