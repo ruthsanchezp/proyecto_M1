@@ -1,9 +1,9 @@
 Algoritmo costo_enviozapatos
     Definir precio, desc1, desc2, IVA, precioDesc2, precioIVA, total1, total2, precioEnvioTotal, posicion, precioxDestino, peso, i, j como Real
     Definir cantidad como Entero
-	Definir destino como Cadena
+    Definir destino como Cadena
 	
-	//Asignacion de valores 
+    //Asignacion de valores 
     desc1 <- 0.1 // Descuento 10%
     desc2 <- 0.05 // Descuento 5% adicional por 2 pares o mas
     IVA <- 0.12 // IVA 12%
@@ -16,7 +16,7 @@ Algoritmo costo_enviozapatos
 	destinos[4]<- "br"
 	destinos[5] <- "es"
 	
-	// Vector de precios  fijos por destino
+	// Vector de precios fijos de envío por destino
 	Dimension precioDestino[5]
 	precioDestino[1] <- "10"
 	precioDestino[2]<- "20"
@@ -57,12 +57,12 @@ Algoritmo costo_enviozapatos
 		
 	Hasta Que cantidad >= 1
 	
-	//Solicita el destino en los formatos indicados
+	// Solicita el destino en los formatos indicados
 	Escribir("Ingresar Ciudad de destino. Ej. ny, pe, bo, br, es.")
 	leer destino
 	
-	//Recorre el vector destinos, y busca que el destino que se ingresa por pantalla concida con algun valor del vector
-	//Si se cumple, guarda esa posicion en la que encontro el valor.
+	// Recorre el vector destinos, si el valor de destino ingresado por pantalla, es igual al valor del vector en la posición [i], entonces, se cumple la condición,
+        // Luego, guarda esa posicion en la que encontro el valor.
 	Para i<-1 Hasta 5 Con Paso 1 Hacer		
 		
 		Si destinos[i] = destino Entonces
@@ -71,8 +71,8 @@ Algoritmo costo_enviozapatos
 		
 	FinPara
 	
-	// Recorre el vector PrecioDestino, y busca que la posicion del vector encontrada en destinos, sea igual a la de PrecioDestino
-	//Si se cumple la condicion, guarda el valor de la posicion de PrecioDestino, en una variable llamada "pdestino".
+	// Recorre el vector PrecioDestino, si la posición del vector precioDestino es igual a la encontrada en destino [i], se cumple la condicion, entonces
+       // Guarda el valor de la posicion de PrecioDestino, en una variable llamada "pdestino".
 	Para j<-1 Hasta 5 con paso 1 Hacer
 		
 		Si posicion == j 
@@ -85,7 +85,8 @@ Algoritmo costo_enviozapatos
 	
 	// Se convierte a numero, ya estaba definida como cadena y arrojaba error en el calculo de precioEnvioTotal
 	precioxDestino <- ConvertirANumero(pdestino)
-	
+
+     // Condicion para el envío de 2 o más pares, o en caso contrario, para 1 par de zapatos.
 	Si cantidad >= 2 Entonces
 		precio <- precio * (1 - desc1) // Aplicar descuento del 10% 
 		precioIVA <- precio * (1 + IVA) // Monto con IVA
@@ -99,20 +100,20 @@ Algoritmo costo_enviozapatos
 		precioEnvioTotal <- precioxDestino + cantidad * peso // Costo de destino fijo, mas kg por par de zapatos
 	FinSi
 	
-	// Calcular el total final a pagar
+   // Calcula el total final a pagar
     total2 <- total1 + precioEnvioTotal
     
-    // Mostrar los resultados
+    // Muestra los resultados deglosados
     Escribir("Precio unitario con 10% descuento: ")
     Escribir(precio)
     
     Escribir("Precio + 12% IVA: ")
     Escribir(precioIVA)
     
-	Escribir("Cantidad de pares: ")
+    Escribir("Cantidad de pares: ")
     Escribir(cantidad)
     
-	Escribir("Precio con 5% descuento adicional, por cantidad: ")
+    Escribir("Precio con 5% descuento adicional, por cantidad: ")
     Escribir(precioDesc2)
     
     Escribir("Total antes de envio:")
