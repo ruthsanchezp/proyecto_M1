@@ -149,7 +149,7 @@ Algoritmo costo_enviozapatos
     Escribir("Total antes de envio:")
     Escribir(total1)
 	
-    Escribir("Costo de envio total:")
+    Escribir("Costo de envio:")
     Escribir(precioEnvioTotal)
     
     // Mostrar el total final
