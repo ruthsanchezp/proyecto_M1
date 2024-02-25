@@ -1,5 +1,5 @@
 Algoritmo costo_enviozapatos
-    Definir precio, desc1, desc2, IVA, precioDesc2, precioIVA, total1, total2, precioEnvioTotal, posicion, precioxDestino, peso, i, j como Real
+    Definir precio, promo10, promo5, IVA, precioDesc2, precioIVA, total1, total2, precioEnvioTotal, posicion, precioxDestino, peso, i, j como Real
     Definir cantidad como Entero
     Definir destino como Cadena
 	
@@ -59,9 +59,9 @@ Algoritmo costo_enviozapatos
 
 	// Solicita ingresar un cupon de descuento. Si el nombre del cupon es "desc1" aplica un 10%. En otro caso, 0%
 
-	Escribir ("Ingresar cupon de descuento 1: Ej. desc1")
+	Escribir ("Ingresar cupon de descuento 1: Ej. promo10")
 	leer descuento1
-	Si descuento1 = "desc1" Entonces
+	Si descuento1 = "promo10" Entonces
 		aplicadesc1 <- 0.1 // Descuento 10%
    	Sino 
 	    aplicadesc1 <- 0 // Descuento 0
@@ -70,10 +70,10 @@ Algoritmo costo_enviozapatos
 // Si la cantidad es mayor a 2, solicita ingresar un segundo cupon de descuento. Si el nombre del cupon es "desc2" aplica un 5% adicional. En otro caso, 0%
 
 	Si cantidad >=2 Entonces
-		Escribir ("Ingresar cupon de descuento 2: Ej. desc2")
+		Escribir ("Ingresar cupon de descuento 2: Ej. promo5")
 		leer descuento2
-		Si descuento2 = "desc2" Entonces
-			aplicadesc2 <- 0.05 // Descuento 5% adicional por 2 pares o m�s
+		Si descuento2 = "promo5" Entonces
+			aplicadesc2 <- 0.05 // Descuento 5% adicional por 2 pares o mas
 	Sino
 			aplicadesc2 <- 0
 	FinSi
