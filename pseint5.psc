@@ -76,7 +76,7 @@ Algoritmo costo_enviozapatos
 		leer descuento2
 		Si descuento2 = "promo5" Entonces
 		aplicadesc2 <- 0.05 // Descuento 5% adicional por 2 pares o mas
-		Escribir("El cupon ingresado no tiene descuento.")
+		Escribir("Se ha aplicado un 5% de descuento.")
 		Escribir ""
 	Sino
 		aplicadesc2 <- 0
