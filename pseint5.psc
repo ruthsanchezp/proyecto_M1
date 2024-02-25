@@ -52,7 +52,7 @@ Algoritmo costo_enviozapatos
 		leer cantidad
 		
 		Si cantidad <= 0 Entonces
-			Escribir ("El pedido minimo es de 1 unidad.")
+			Escribir ("El pedido minimo es de 1 par de zapatos.")
 		FinSi
 		
 	Hasta Que cantidad >= 1
