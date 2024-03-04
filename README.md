@@ -1,5 +1,3 @@
-**Tabla de contenidos**
-
 # Algoritmo para el cálculo del costo de envío
 
 El proyecto constiste en crear un algoritmo para determinar el costo de envío de un producto, incluyendo cupones de descuentos, destino, y peso del producto.
