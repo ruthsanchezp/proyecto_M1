@@ -4,7 +4,7 @@ El proyecto constiste en crear un algoritmo para determinar el costo de envío d
 
 ## Introducción
 
-El desarrollo del algoritmo se realizó en Pseint, por lo que solo es ejecutable en el mismo programa. Consite en realizar una solicitud de datos, como  el precio del producto, cantidad, peso, cupones en caso de existir, y destino. Dado el alcance de Pseint, y que se trata solo de un algoritmo, se realizaron solo validaciones para que el resultado sea un valor congruente con los datos ingresados.
+El desarrollo del algoritmo se realizó en Pseint (pseint5.psc), por lo que solo es ejecutable en el mismo programa. Consite en realizar una solicitud de datos, como  el precio del producto, cantidad, peso, cupones en caso de existir, y destino. Dado el alcance de Pseint, y que se trata solo de un algoritmo, se realizaron solo validaciones para que el resultado sea un valor congruente con los datos ingresados.
 
 ## Instrucciones
 
